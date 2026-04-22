@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import AOS from "aos";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation } from "swiper/modules";
+import Image from "next/image";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
@@ -13,7 +14,14 @@ export default function Gallery() {
   }, []);
 
   const photos = [
-    { title: "Caso Carillas Completas", emojiB: "😐", emojiA: "😊", subB: "Dientes irregulares", subA: "Sonrisa perfecta" },
+    { 
+      title: "8 Carillas Dentales Superiores", 
+      imgB: "/antes-carillas-8.jpg", 
+      imgA: "/despues-carillas-8.jpg", 
+      emojiB: "😐", emojiA: "😊", 
+      subB: "Antes", subA: "Después",
+      rotate: true 
+    },
     { title: "Caso Blanqueamiento + Veneers", emojiB: "😬", emojiA: "🤩", subB: "Manchas severas", subA: "6 carillas de porcelana" },
     { title: "Caso Cierre de Diastema", emojiB: "😕", emojiA: "😍", subB: "Diastema (espacio)", subA: "Cierre con carillas" },
     { title: "Caso Rehabilitación Oral", emojiB: "😤", emojiA: "🥰", subB: "Dientes desgastados", subA: "Rehabilitación 10 carillas" },
@@ -46,21 +54,33 @@ export default function Gallery() {
               768: { slidesPerView: 1.4 },
               1024: { slidesPerView: 1.8 }
             }}
-            className="pb-12"
+            className="pb-16"
           >
             {photos.map((photo, i) => (
               <SwiperSlide key={i}>
-                <div className="ba-card flex rounded border border-gold/10">
-                  <div className="flex-1 min-h-[220px] relative flex flex-col items-center justify-center bg-gradient-to-br from-[#2D2D2D] to-[#3D3D3D]">
-                    <span className="absolute top-3 left-3 text-[0.65rem] tracking-widest uppercase font-bold px-2.5 py-1 rounded bg-obsidian/80 text-white/70">Antes</span>
-                    <div className="text-5xl mb-3">{photo.emojiB}</div>
-                    <p className="text-white/40 text-xs px-4 text-center">{photo.subB}</p>
+                <div className="ba-card flex rounded border border-gold/10 overflow-hidden">
+                  <div className="flex-1 min-h-[250px] relative flex flex-col items-center justify-center bg-gradient-to-br from-[#2D2D2D] to-[#3D3D3D]">
+                    <span className="absolute z-10 top-3 left-3 text-[0.65rem] tracking-widest uppercase font-bold px-2.5 py-1 rounded bg-obsidian/80 text-white/70">Antes</span>
+                    {photo.imgB ? (
+                      <Image src={photo.imgB} alt="Antes" fill className={`object-cover opacity-90 ${photo.rotate ? 'rotate-90 scale-[1.3]' : ''}`} />
+                    ) : (
+                      <>
+                        <div className="text-5xl mb-3 relative z-10">{photo.emojiB}</div>
+                        <p className="text-white/40 text-xs px-4 text-center relative z-10">{photo.subB}</p>
+                      </>
+                    )}
                   </div>
-                  <div className="w-px bg-gold/60" />
-                  <div className="flex-1 min-h-[220px] relative flex flex-col items-center justify-center bg-gradient-to-br from-[#1A1A1A] to-[#2D2D2D]">
-                    <span className="absolute top-3 left-3 text-[0.65rem] tracking-widest uppercase font-bold px-2.5 py-1 rounded bg-gold/90 text-obsidian">Después</span>
-                    <div className="text-5xl mb-3">{photo.emojiA}</div>
-                    <p className="text-white/60 text-xs px-4 text-center">{photo.subA}</p>
+                  <div className="w-1 bg-gold relative z-20" />
+                  <div className="flex-1 min-h-[250px] relative flex flex-col items-center justify-center bg-gradient-to-br from-[#1A1A1A] to-[#2D2D2D]">
+                    <span className="absolute z-10 top-3 left-3 text-[0.65rem] tracking-widest uppercase font-bold px-2.5 py-1 rounded bg-gold/90 text-obsidian">Después</span>
+                    {photo.imgA ? (
+                      <Image src={photo.imgA} alt="Después" fill className={`object-cover ${photo.rotate ? 'rotate-90 scale-[1.3]' : ''}`} />
+                    ) : (
+                      <>
+                        <div className="text-5xl mb-3 relative z-10">{photo.emojiA}</div>
+                        <p className="text-white/60 text-xs px-4 text-center relative z-10">{photo.subA}</p>
+                      </>
+                    )}
                   </div>
                 </div>
                 <p className="text-center mt-4 text-sm text-graphite/60 font-medium font-serif italic">{photo.title}</p>

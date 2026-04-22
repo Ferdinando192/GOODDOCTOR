@@ -75,6 +75,11 @@
 }
 
 /* SWIPER overrides globally */
+.swiper-pagination {
+  position: relative !important;
+  bottom: auto !important;
+  margin-top: 1.5rem !important;
+}
 .swiper-pagination-bullet {
   background: rgba(201,168,76,0.4) !important;
   opacity: 1 !important;

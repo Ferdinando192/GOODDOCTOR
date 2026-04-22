@@ -44,7 +44,7 @@ export default function Testimonials() {
               768: { slidesPerView: 2 },
               1024: { slidesPerView: 3 }
             }}
-            className="pb-12"
+            className="pb-16"
           >
             {testimonials.map((test, i) => (
               <SwiperSlide key={i}>
