@@ -19,8 +19,7 @@ export default function Gallery() {
       imgB: "/antes-carillas-8.jpg", 
       imgA: "/despues-carillas-8.jpg", 
       emojiB: "😐", emojiA: "😊", 
-      subB: "Antes", subA: "Después",
-      rotate: true 
+      subB: "Antes", subA: "Después" 
     },
     { title: "Caso Blanqueamiento + Veneers", emojiB: "😬", emojiA: "🤩", subB: "Manchas severas", subA: "6 carillas de porcelana" },
     { title: "Caso Cierre de Diastema", emojiB: "😕", emojiA: "😍", subB: "Diastema (espacio)", subA: "Cierre con carillas" },
@@ -62,7 +61,7 @@ export default function Gallery() {
                   <div className="flex-1 min-h-[250px] relative flex flex-col items-center justify-center bg-gradient-to-br from-[#2D2D2D] to-[#3D3D3D]">
                     <span className="absolute z-10 top-3 left-3 text-[0.65rem] tracking-widest uppercase font-bold px-2.5 py-1 rounded bg-obsidian/80 text-white/70">Antes</span>
                     {photo.imgB ? (
-                      <Image src={photo.imgB} alt="Antes" fill className={`object-cover opacity-90 ${photo.rotate ? 'rotate-90 scale-[1.3]' : ''}`} />
+                      <Image src={photo.imgB} alt="Antes" fill className="object-cover opacity-90" />
                     ) : (
                       <>
                         <div className="text-5xl mb-3 relative z-10">{photo.emojiB}</div>
@@ -74,7 +73,7 @@ export default function Gallery() {
                   <div className="flex-1 min-h-[250px] relative flex flex-col items-center justify-center bg-gradient-to-br from-[#1A1A1A] to-[#2D2D2D]">
                     <span className="absolute z-10 top-3 left-3 text-[0.65rem] tracking-widest uppercase font-bold px-2.5 py-1 rounded bg-gold/90 text-obsidian">Después</span>
                     {photo.imgA ? (
-                      <Image src={photo.imgA} alt="Después" fill className={`object-cover ${photo.rotate ? 'rotate-90 scale-[1.3]' : ''}`} />
+                      <Image src={photo.imgA} alt="Después" fill className="object-cover" />
                     ) : (
                       <>
                         <div className="text-5xl mb-3 relative z-10">{photo.emojiA}</div>
